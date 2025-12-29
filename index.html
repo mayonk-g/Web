@@ -8,7 +8,49 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
-<body>
+<body data-theme="blue">
+    <!-- Theme Customizer -->
+    <div class="theme-customizer" id="themeCustomizer">
+        <div class="theme-header">
+            <h4><i class="fas fa-palette"></i> Customize Theme</h4>
+            <button class="close-customizer" id="closeCustomizer"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="theme-colors">
+            <h5>Color Themes</h5>
+            <div class="color-options">
+                <button class="color-option blue" data-theme="blue" title="Blue Theme"></button>
+                <button class="color-option green" data-theme="green" title="Green Theme"></button>
+                <button class="color-option purple" data-theme="purple" title="Purple Theme"></button>
+                <button class="color-option red" data-theme="red" title="Red Theme"></button>
+                <button class="color-option dark" data-theme="dark" title="Dark Theme"></button>
+                <button class="color-option orange" data-theme="orange" title="Orange Theme"></button>
+            </div>
+        </div>
+        <div class="theme-options">
+            <h5>Options</h5>
+            <div class="theme-toggle">
+                <span>Dark Mode</span>
+                <label class="switch">
+                    <input type="checkbox" id="darkModeToggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="theme-toggle">
+                <span>Animated Background</span>
+                <label class="switch">
+                    <input type="checkbox" id="animatedBgToggle" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        <button class="btn-reset" id="resetTheme">Reset to Default</button>
+    </div>
+
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle-btn" id="themeToggleBtn">
+        <i class="fas fa-palette"></i>
+    </button>
+
     <!-- Header & Navigation -->
     <header>
         <div class="container nav-container">
@@ -31,13 +73,28 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container hero-content">
-            <div class="profile-img-placeholder">
-                <span>LM</span>
+            <div class="profile-container">
+                <div class="profile-image" id="profileImageContainer">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Lawrence Okeyo Muga" id="profileImage">
+                    <div class="profile-overlay">
+                        <button class="btn-change-photo" id="changePhotoBtn">
+                            <i class="fas fa-camera"></i> Change Photo
+                        </button>
+                    </div>
+                </div>
+                <input type="file" id="profileUpload" accept="image/*" style="display: none;">
+                <div class="profile-status">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Online</span>
+                </div>
             </div>
             <h1>Lawrence Okeyo Muga</h1>
             <h2>Diploma in ICT | Second Year Student</h2>
             <p>Shanzu Business School | Passionate about technology and software development</p>
-            <a href="#contact" class="btn-primary">Get In Touch</a>
+            <div class="hero-btns">
+                <a href="#contact" class="btn-primary">Get In Touch</a>
+                <a href="#about" class="btn-secondary">Learn More</a>
+            </div>
         </div>
     </section>
 
@@ -59,6 +116,29 @@
                         <p><strong>Focus Areas:</strong> Software Development, Networking, Database Systems, Web Technologies</p>
                     </div>
                 </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>2+ Years</h3>
+                        <p>ICT Studies</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h3>5+ Projects</h3>
+                        <p>Completed</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3>8+ Skills</h3>
+                        <p>Mastered</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -70,35 +150,66 @@
             <div class="skills-container">
                 <div class="skill-category">
                     <h3><i class="fas fa-code"></i> Programming & Development</h3>
-                    <ul class="skill-list">
-                        <li><i class="fas fa-check-circle"></i> HTML5 & CSS3</li>
-                        <li><i class="fas fa-check-circle"></i> JavaScript Basics</li>
-                        <li><i class="fas fa-check-circle"></i> Python Programming</li>
-                        <li><i class="fas fa-check-circle"></i> Java Fundamentals</li>
-                        <li><i class="fas fa-check-circle"></i> Responsive Web Design</li>
-                    </ul>
+                    <div class="skill-meter">
+                        <div class="skill-name">HTML5 & CSS3</div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-level="95"></div>
+                        </div>
+                        <div class="skill-percent">95%</div>
+                    </div>
+                    <div class="skill-meter">
+                        <div class="skill-name">JavaScript Basics</div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-level="80"></div>
+                        </div>
+                        <div class="skill-percent">80%</div>
+                    </div>
+                    <div class="skill-meter">
+                        <div class="skill-name">Python Programming</div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-level="85"></div>
+                        </div>
+                        <div class="skill-percent">85%</div>
+                    </div>
+                    <div class="skill-meter">
+                        <div class="skill-name">Java Fundamentals</div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-level="75"></div>
+                        </div>
+                        <div class="skill-percent">75%</div>
+                    </div>
                 </div>
                 
                 <div class="skill-category">
                     <h3><i class="fas fa-database"></i> Database & Systems</h3>
-                    <ul class="skill-list">
-                        <li><i class="fas fa-check-circle"></i> MySQL Database Management</li>
-                        <li><i class="fas fa-check-circle"></i> System Analysis & Design</li>
-                        <li><i class="fas fa-check-circle"></i> Computer Networks</li>
-                        <li><i class="fas fa-check-circle"></i> Hardware Troubleshooting</li>
-                        <li><i class="fas fa-check-circle"></i> Software Installation & Configuration</li>
-                    </ul>
-                </div>
-                
-                <div class="skill-category">
-                    <h3><i class="fas fa-tools"></i> Tools & Technologies</h3>
-                    <ul class="skill-list">
-                        <li><i class="fas fa-check-circle"></i> Microsoft Office Suite</li>
-                        <li><i class="fas fa-check-circle"></i> Visual Studio Code</li>
-                        <li><i class="fas fa-check-circle"></i> Git & Version Control</li>
-                        <li><i class="fas fa-check-circle"></i> Adobe Photoshop Basics</li>
-                        <li><i class="fas fa-check-circle"></i> Technical Documentation</li>
-                    </ul>
+                    <div class="skill-meter">
+                        <div class="skill-name">MySQL Database</div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-level="90"></div>
+                        </div>
+                        <div class="skill-percent">90%</div>
+                    </div>
+                    <div class="skill-meter">
+                        <div class="skill-name">System Analysis & Design</div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-level="85"></div>
+                        </div>
+                        <div class="skill-percent">85%</div>
+                    </div>
+                    <div class="skill-meter">
+                        <div class="skill-name">Computer Networks</div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-level="88"></div>
+                        </div>
+                        <div class="skill-percent">88%</div>
+                    </div>
+                    <div class="skill-meter">
+                        <div class="skill-name">Hardware Troubleshooting</div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-level="92"></div>
+                        </div>
+                        <div class="skill-percent">92%</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -120,6 +231,7 @@
                         <span class="tag">CSS</span>
                         <span class="tag">JavaScript</span>
                     </div>
+                    <div class="project-date">Completed: June 2023</div>
                 </div>
                 
                 <div class="project-card">
@@ -133,6 +245,7 @@
                         <span class="tag">MySQL</span>
                         <span class="tag">Tkinter</span>
                     </div>
+                    <div class="project-date">Completed: April 2023</div>
                 </div>
                 
                 <div class="project-card">
@@ -146,6 +259,7 @@
                         <span class="tag">Networking</span>
                         <span class="tag">Security</span>
                     </div>
+                    <div class="project-date">Completed: March 2023</div>
                 </div>
             </div>
         </div>
@@ -177,6 +291,16 @@
                         <div>
                             <h4>Email</h4>
                             <p>mugalawrence5@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Mombasa, Kenya</p>
                         </div>
                     </div>
                     
@@ -245,16 +369,33 @@
     <!-- Footer -->
     <footer>
         <div class="container footer-content">
-            <a href="#" class="logo footer-logo">Lawrence<span>Muga</span></a>
+            <div class="footer-main">
+                <a href="#" class="logo footer-logo">Lawrence<span>Muga</span></a>
+                <p>Diploma in ICT Student at Shanzu Business School</p>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/je_cherche_le_titre?igsh=ZGIyeHM3NzF3aGZs" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:mugalawrence5@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="tel:+254115373940"><i class="fas fa-phone-alt"></i></a>
+                </div>
+            </div>
             <div class="footer-links">
+                <h4>Quick Links</h4>
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
                 <a href="#skills">Skills</a>
                 <a href="#projects">Projects</a>
                 <a href="#contact">Contact</a>
             </div>
+            <div class="footer-contact">
+                <h4>Contact Info</h4>
+                <p><i class="fas fa-phone"></i> +254 115 373 940</p>
+                <p><i class="fas fa-envelope"></i> mugalawrence5@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Mombasa, Kenya</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
             <p class="copyright">© <span id="currentYear"></span> Lawrence Okeyo Muga. All rights reserved.</p>
-            <p class="copyright">Diploma in ICT Student | Shanzu Business School</p>
+            <p class="copyright">Designed with <i class="fas fa-heart"></i> by Lawrence</p>
         </div>
     </footer>
 
